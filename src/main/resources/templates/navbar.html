@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="navigation" class="navbar navbar-light bg-light justify-content-sm-between">
+    <h1 class="text-primary font-weight-light">FullStack Teaser App</h1>
+    <ul class="nav">
+        <li class="nav-item text-info ml-5">
+            <a class="nav-link" th:href="@{/index}">Home</a>
+        </li>
+        <li class="nav-item text-info ml-5">
+            <a class="nav-link" th:href="@{/people}">Person control</a>
+        </li>
+
+    </ul>
+</nav>
+</body>
+</html>

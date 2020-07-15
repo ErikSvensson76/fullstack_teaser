@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}" />
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script defer th:src="@{/js/script.js}"></script>
+    <meta charset="UTF-8">
+    <title>User Control</title>
+</head>
+<body>
+<nav th:replace="navbar :: navigation"></nav>
+<div class="container">
+    <div class="card mt-4 mb-3 border-primary">
+        <h4 class="bg-light text-primary card-header">Users:</h4>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Birth date</th>
+                        <th scope="col">Registration Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${userList}">
+                    <td><span th:text="${user.firstName}"></span></td>
+                    <td><span th:text="${user.lastName}"></span></td>
+                    <td><span th:text="${user.email}"></span></td>
+                    <td><span th:text="${user.birthDate}"></span></td>
+                    <td><span th:text="${user.regDate}"></span></td>
+                    <th>
+                        <a class="btn btn-outline-info btn-sm" th:href="@{/people/{id} (id = ${user.userId}) }">See details</a>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html></html>
