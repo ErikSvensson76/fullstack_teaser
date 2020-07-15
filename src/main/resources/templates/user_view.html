@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}" />
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script defer th:src="@{/js/script.js}"></script>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<nav th:replace="navbar :: navigation"></nav>
+<div class="container">
+    <div class="card mt-4 mb-3 border-primary shadow-sm">
+        <h4 class="bg-light text-primary card-header" th:text="${user.firstName + ' ' + user.lastName}"></h4>
+        <div class="card-body">
+            <div class="d-md-flex flex-row mb-3">
+                <div class="col-sm-2 bg-light shadow-sm mr-3">
+                    <span>Name:</span>
+                </div>
+                <div class="col-sm-10 bg-light shadow-sm">
+                    <span th:text="${user.firstName + ' ' + user.lastName}">Erik Svensson</span>
+                </div>
+            </div>
+            <div class="d-md-flex flex-row mb-3">
+                <div class="col-sm-2 bg-light shadow-sm mr-3">
+                    <span>Email:</span>
+                </div>
+                <div class="col-sm-10 bg-light shadow-sm">
+                    <span th:text="${user.email}">erik.svensson@lexicon.se</span>
+                </div>
+            </div>
+            <div class="d-md-flex flex-row mb-3">
+                <div class="col-sm-2 bg-light shadow-sm mr-3">
+                    <span>Birth Date:</span>
+                </div>
+                <div class="col-sm-10 bg-light shadow-sm">
+                    <span th:text="${user.birthDate}"></span>
+                </div>
+            </div>
+            <div class="d-md-flex flex-row mb-3">
+                <div class="col-sm-2 bg-light shadow-sm mr-3">
+                    <span>Reg Date:</span>
+                </div>
+                <div class="col-sm-10 bg-light shadow-sm">
+                    <span th:text="${user.regDate}"></span>
+                </div>
+            </div>
+
+            <div class="d-sm-flex flex-row mb-3">
+                <form th:action="@{/people/{id}/delete (id = ${user.userId})}" method="post">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
