@@ -30,6 +30,9 @@ public class CommandLine implements CommandLineRunner {
                 LocalDate.now()
         );
         appUser = appUserRepository.save(appUser);
-        System.out.println(appUser);
+
+
+        System.out.println(appUserRepository.findByEmail("erik.svensson@lexicon.se"));
+
     }
 }
