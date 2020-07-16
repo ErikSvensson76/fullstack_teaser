@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}" />
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script defer th:src="@{/js/script.js}"></script>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<nav th:replace="navbar :: navigation"></nav>
+<div class="container">
+    <div class="card mt-4 mb-3 border-primary shadow-sm">
+        <h4 class="bg-light text-primary card-header">Update User:</h4>
+        <div class="card-body">
+            <form th:action="@{/people/{id}/update (id = ${form.userId}) }" method="post" th:object="${form}">
+
+                <input type="hidden" th:field="*{userId}" th:value="${form.userId}" />
+
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">First Name</span>
+                            </div>
+                            <input class="form-control" type="text" id="first_name" placeholder="Write your first name here..." th:field="*{firstName}" th:value="${form.firstName}"/>
+                        </div>
+                        <div th:if="${#fields.hasErrors('firstName')}">
+                            <ul class="p-0">
+                                <li th:each="err : ${#fields.errors('firstName')}">
+                                    <span class="text-warning font-italic" th:text="${err}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Last Name</span>
+                            </div>
+                            <input class="form-control" type="text" id="last_name" placeholder="Write your last name here..." th:field="*{lastName}" th:value="${form.lastName}"/>
+                        </div>
+                        <div th:if="${#fields.hasErrors('lastName')}">
+                            <ul class="p-0">
+                                <li th:each="err : ${#fields.errors('lastName')}">
+                                    <span class="text-warning font-italic" th:text="${err}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-12 mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Email</span>
+                            </div>
+                            <input class="form-control" type="text" id="email" placeholder="Enter a valid email address..." th:field="*{email}" th:value="${form.email}"/>
+                        </div>
+                        <div th:if="${#fields.hasErrors('email')}">
+                            <ul class="p-0">
+                                <li th:each="err : ${#fields.errors('email')}">
+                                    <span class="text-warning font-italic" th:text="${err}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-12 mb-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Birth date</span>
+                            </div>
+                            <input class="form-control" type="date" id="birth_date" placeholder="Enter your birth date (yyyy-mm-dd)..." th:field="*{birthDate}" th:value="${form.birthDate}"/>
+                        </div>
+                        <div th:if="${#fields.hasErrors('birthDate')}">
+                            <ul class="p-0">
+                                <li th:each="err : ${#fields.errors('birthDate')}">
+                                    <span class="text-warning font-italic" th:text="${err}"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

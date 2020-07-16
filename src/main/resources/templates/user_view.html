@@ -49,6 +49,7 @@
             </div>
 
             <div class="d-sm-flex flex-row mb-3">
+                <a class="btn btn-primary mr-3" th:href="@{/people/{id}/update (id = ${user.userId}) }">Update</a>
                 <form th:action="@{/people/{id}/delete (id = ${user.userId})}" method="post">
                     <button class="btn btn-danger">Delete</button>
                 </form>
